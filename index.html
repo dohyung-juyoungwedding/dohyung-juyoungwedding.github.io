@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김도형♥︎최주영 결혼합니다</title>
+  <meta property="og:title" content="김도형♥︎최주영 결혼합니다">
+  <meta property="og:image" content="https://dohyung-juyoungwedding.github.io/img/E237D696.jpg">
+  <meta property="og:type" content="website" />
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:url" content="https://dohyung-juyoungwedding.github.io">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title"></h1>
+      <p class="hero-subtitle"></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <img src="/img/text.jpg" alt="Description of the image" class="section-image">
+    <div class="image-grid">
+      <img src="/img/0126039E.JPG" alt="Image 1" class="gallery-image">
+      <img src="/img/1649059531.JPG" alt="Image 2" class="gallery-image">
+      <img src="/img/1666583942.jpg" alt="Image 3" class="gallery-image">
+      <img src="/img/7A872E21.JPG" alt="Image 4" class="gallery-image">
+      <img src="/img/77974A8B.JPG" alt="Image 5" class="gallery-image">
+      <img src="/img/IMG_5078.JPG" alt="Image 6" class="gallery-image">
+      <img src="/img/IMG_3731.jpg" alt="Image 7" class="gallery-image">
+      <img src="/img/52DF4DD5.jpg" alt="Image 8" class="gallery-image">
+      <img src="/img/IMG_7714.jpg" alt="Image 9" class="gallery-image">
+    </div>
+  </div>
+  <div class="overlay" id="overlay">
+    <div class="swiper-container">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <button class="close-button"><i class="fas fa-times"></i></button>
+  </div>
+
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.gallery-image');
+      const overlay = document.getElementById('overlay');
+      const swiperWrapper = overlay.querySelector('.swiper-wrapper');
+      const closeButton = overlay.querySelector('.close-button');
+
+      let swiper;
+
+      images.forEach((image, index) => {
+        image.addEventListener('click', () => {
+          swiperWrapper.innerHTML = '';
+
+          images.forEach(img => {
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+            const magnifiedImage = document.createElement('img');
+            magnifiedImage.src = img.src;
+            magnifiedImage.alt = img.alt;
+            slide.appendChild(magnifiedImage);
+            swiperWrapper.appendChild(slide);
+          });
+
+          if (!swiper) {
+            swiper = new Swiper('.swiper-container', {
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+            });
+          }
+
+          swiper.update(); // Update Swiper
+          swiper.slideTo(index, 0); // Go to the clicked image
+
+          overlay.style.display = 'block';
+        });
+      });
+      closeButton.addEventListener('click', () => {
+        overlay.style.display = 'none';
+      });
+    });
+    function toggleDropdown(id) {
+      var dropdownContent = document.getElementById(id);
+      dropdownContent.classList.toggle("show");
+      dropdownContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
+
